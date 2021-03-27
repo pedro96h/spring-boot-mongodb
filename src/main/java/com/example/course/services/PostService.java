@@ -1,5 +1,6 @@
 package com.example.course.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class PostService {
 			return post.get();
 		}
 		throw new ObjectNotFoundException("Objeto não encontrador");
+	}
+	
+	public List<Post> findByTitle(String text){
+		return postRepository.findByTitleContainingIgnoreCase(text);
 	}
 
 }
